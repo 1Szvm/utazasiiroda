@@ -7,15 +7,20 @@
  - felhasználó ellenőrzése:
     >git config user.name
 
-    >git config user.name "username"
-
- - email ellenőrzése:
     >git config user.email
-
-    >git config user.email "email"
  - fájlok ellenőrzés
     >git status
  - előkészítés commit-ra
     >git add .
  - feltőltés
     > git commit -m "msg"
+
+## összekapcsolás egy távoli repoval
+
+ - új github repo létrehozása
+ 
+ -helyi 
+    >git remote add origin "https://token@github.com/1Szvm/"file".git"
+
+-eltárolása az új verziónak
+    >git push -u origin main

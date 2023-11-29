@@ -17,7 +17,7 @@
 
 ## Összekapcsolás egy távoli repoval
 
- - helyi 
+ - helyi repo össze kapcsolása:
     >git remote add origin "https://token@github.com/1Szvm/"file".git"
 
  - eltárolása az új verziónak:

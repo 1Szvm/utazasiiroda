@@ -17,3 +17,5 @@
     >git status
  - előkészítés commit-ra
     >git add .
+ - feltőltés
+    > git commit -m "msg"

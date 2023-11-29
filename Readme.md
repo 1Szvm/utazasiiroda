@@ -23,3 +23,6 @@
  - eltárolása az új verziónak:
 
     >git push -u origin master
+
+ - a további push-nál:
+    > git push

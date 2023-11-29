@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <title>darkmode</title>
+    <style>
+        body{
+            transition: background-color 0.5s;
+        }
+        .dark-theme{
+            background-color: rgb(44, 44, 49);
+            color: white;
+        }
+        .card-img-top{
+            height: 15vw;
+            object-fit: cover;
+            min-height: 100px;
+        }
+        .extended-img{
+            height: 50vw;
+        }
+        img{
+            transition: height 0.5s;
+        }
+    </style>
+    <script src="getData.js"></script>
+</head>
+<body>
+    <div class="d-flex justify-content-between align-items-center rounded">
+        <h1 class="m-3">Travel the world</h1>
+        <div class="form-check form-switch m-3">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" onchange="cahngeTheme()">
+            <label class="form-check-label" for="flexSwitchCheckChecked">Switch light mode</label>
+        </div>
+    </div>
+    <div class="container">
+        <div class="table my-3"></div>
+    </div>
+
+    <script defer>
+        getData("https://raw.githubusercontent.com/mkatay/json-tours/main/tours",renderTours)
+
+        function renderTours(data){
+            let imgid=0
+            data.forEach(element => {
+                document.querySelector(".table").innerHTML+=`
+                <div class="card mb-3 shadow-lg" type="button" data-bs-toggle="collapse" data-bs-target="#${element.id}" onclick="gonb(this)">
+                    <img src="${element.image}" id="${imgid}" class="card-img-top">
+                    <div class="card-body d-flex justify-content-between">
+                        <h2 class="card-title">${element.name}</h2>
+                    </div>
+                    <div class="collapse" id="${element.id}">
+                            <div class="card card-body">
+                                <p>${element.info}</p>
+                                <h3 class="text-end mx-2">${element.price}$</h3>
+                            </div>
+                    </div>
+                </div>
+                `
+                imgid++
+            })
+        }
+
+
+
+        function gonb(Obj){
+            document.getElementById(`${Obj.children[0].id}`).classList.toggle("extended-img")
+        }
+
+        const cahngeTheme=()=>{
+            document.body.classList.toggle("dark-theme")
+            document.querySelectorAll(".card").forEach(element => {
+                element.classList.toggle("bg-dark")
+                element.classList.toggle("text-white")
+            }); 
+            document.querySelectorAll("button").forEach(element=>{
+                element.classList.toggle("text-white")
+            }) 
+        }
+    </script>
+</body>
+</html>

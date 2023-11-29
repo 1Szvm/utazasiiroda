@@ -15,12 +15,11 @@
  - feltőltés
     > git commit -m "msg"
 
-## összekapcsolás egy távoli repoval
+## Összekapcsolás egy távoli repoval
 
- - új github repo létrehozása
- 
- -helyi 
+ - helyi 
     >git remote add origin "https://token@github.com/1Szvm/"file".git"
 
--eltárolása az új verziónak
+ - eltárolása az új verziónak:
+
     >git push -u origin main
